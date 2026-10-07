@@ -37,7 +37,20 @@ python -m pip install --user git+https://github.com/mylv0714/AchatSaver
 
 또는 이 폴더를 복사한 뒤 그 안에서 `python -m pip install --user .`
 
-> `achat` 명령을 못 찾으면 `python -m achat_saver ...` 으로 똑같이 쓸 수 있습니다.
+### `achat` 명령을 못 찾을 때
+
+설치 중 `achat.exe is installed in '...\Scripts' which is not on PATH` 경고가 나왔다면, 설치 폴더가 PATH 에 없는 것입니다.
+당장은 `achat` 대신 `python -m achat_saver ...` 로 똑같이 쓸 수 있고, 아래처럼 PATH 에 한 번 추가하면 `achat` 으로 쓸 수 있습니다.
+
+**Windows** (PowerShell, 실행 후 터미널을 새로 열기):
+```powershell
+$d = python -c "import sysconfig; print(sysconfig.get_path('scripts', 'nt_user'))"; [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path","User") + ";$d", "User")
+```
+
+**macOS / Linux** (`~/.zshrc` 또는 `~/.bashrc` 에 추가 후 터미널을 새로 열기):
+```bash
+export PATH="$(python3 -m site --user-base)/bin:$PATH"
+```
 
 ## 사용법
 
