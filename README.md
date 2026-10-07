@@ -32,7 +32,7 @@ AI 코딩 에이전트와 나눈 대화를 **프로젝트 안 `Achat/` 폴더에
 Python 3.9 이상, 외부 의존성 없음.
 
 ```bash
-python -m pip install --user git+https://github.com/<계정>/AchatSaver
+python -m pip install --user git+https://github.com/mylv0714/AchatSaver
 ```
 
 또는 이 폴더를 복사한 뒤 그 안에서 `python -m pip install --user .`
