@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "achat-saver"
+version = "0.1.0"
+description = "Save Claude Code / Cursor / Codex agent conversations as readable Markdown, per project and per day"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+achat = "achat_saver.cli:main"
+
+[tool.setuptools]
+packages = ["achat_saver"]
