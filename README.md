@@ -37,17 +37,20 @@ python -m pip install --user git+https://github.com/mylv0714/AchatSaver
 
 또는 이 폴더를 복사한 뒤 그 안에서 `python -m pip install --user .`
 
-### `achat` 명령을 못 찾을 때
+### `achat` 명령을 찾을 수 없다고 나올 때
 
-설치 중 `achat.exe is installed in '...\Scripts' which is not on PATH` 경고가 나왔다면, 설치 폴더가 PATH 에 없는 것입니다.
-당장은 `achat` 대신 `python -m achat_saver ...` 로 똑같이 쓸 수 있고, 아래처럼 PATH 에 한 번 추가하면 `achat` 으로 쓸 수 있습니다.
+`--user` 설치는 실행 파일을 PATH 에 없는 폴더에 둘 수 있습니다
+(설치 로그의 `WARNING: The script achat.exe is installed in '...' which is not on PATH`).
 
-**Windows** (PowerShell, 실행 후 터미널을 새로 열기):
+- 바로 쓰기: `achat` 대신 `python -m achat_saver init` 처럼 실행하면 똑같이 동작합니다.
+- 영구 해결: 경고에 나온 폴더를 사용자 PATH 에 추가한 뒤 터미널을 새로 엽니다.
+
+**Windows** (PowerShell, 폴더 경로는 설치 경고에 나온 것으로):
 ```powershell
-$d = python -c "import sysconfig; print(sysconfig.get_path('scripts', 'nt_user'))"; [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path","User") + ";$d", "User")
+[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path","User") + ";$env:APPDATA\Python\Python312\Scripts", "User")
 ```
 
-**macOS / Linux** (`~/.zshrc` 또는 `~/.bashrc` 에 추가 후 터미널을 새로 열기):
+**macOS / Linux** (`~/.zshrc` 또는 `~/.bashrc` 에 추가):
 ```bash
 export PATH="$(python3 -m site --user-base)/bin:$PATH"
 ```
