@@ -37,7 +37,22 @@ python -m pip install --user git+https://github.com/mylv0714/AchatSaver
 
 또는 이 폴더를 복사한 뒤 그 안에서 `python -m pip install --user .`
 
-### `achat` 명령을 찾을 수 없다고 나올 때
+## 사용법
+
+```bash
+cd 내프로젝트
+achat init      # 프로젝트 등록 + Achat/ 생성 + .gitignore 추가 + 지난 대화 변환
+achat watch     # 실시간 저장 (등록된 모든 프로젝트 감시, Ctrl+C 로 종료)
+```
+
+| 명령 | 설명 |
+|---|---|
+| `achat init [경로]` | 프로젝트 등록 (등록 목록: `~/.achat/projects.json`) |
+| `achat watch [경로] [--interval 초]` | 1초마다 확인해 바뀐 세션만 다시 씀 |
+| `achat sync [경로]` | 한 번만 변환하고 종료 |
+| `achat list` / `achat remove [경로]` | 등록 목록 / 등록 해제 (`Achat/` 는 지우지 않음) |
+
+## `achat` 명령을 찾을 수 없다고 나올 때
 
 `--user` 설치는 실행 파일을 PATH 에 없는 폴더에 둘 수 있습니다
 (설치 로그의 `WARNING: The script achat.exe is installed in '...' which is not on PATH`).
@@ -54,21 +69,6 @@ python -m pip install --user git+https://github.com/mylv0714/AchatSaver
 ```bash
 export PATH="$(python3 -m site --user-base)/bin:$PATH"
 ```
-
-## 사용법
-
-```bash
-cd 내프로젝트
-achat init      # 프로젝트 등록 + Achat/ 생성 + .gitignore 추가 + 지난 대화 변환
-achat watch     # 실시간 저장 (등록된 모든 프로젝트 감시, Ctrl+C 로 종료)
-```
-
-| 명령 | 설명 |
-|---|---|
-| `achat init [경로]` | 프로젝트 등록 (등록 목록: `~/.achat/projects.json`) |
-| `achat watch [경로] [--interval 초]` | 1초마다 확인해 바뀐 세션만 다시 씀 |
-| `achat sync [경로]` | 한 번만 변환하고 종료 |
-| `achat list` / `achat remove [경로]` | 등록 목록 / 등록 해제 (`Achat/` 는 지우지 않음) |
 
 ## 로그인 시 자동 실행
 
